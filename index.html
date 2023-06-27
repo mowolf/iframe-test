@@ -4,22 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://localhost:8080/web-support/main.css"
+    />
   </head>
   <body>
-    <!-- onload=... prevents flashing when iframme loaded-->
     <iframe
       src="https://awesomeqa.xyz/widget-test"
-      style="
-        border: none;
-        position: fixed;
-        right: 0px;
-        bottom: 0px;
-        width: 100%;
-        height: 100%;
-        visibility: hidden;
-        pointer-events: none;
-      "
-      onload="setTimeout(() => this.style.visibility='visible', 500)"
+      class="awesomeqa-widget"
+      style="width: 56px; height: 56px"
+      onload="window.addEventListener('message', (e) => {if(e.data === 'awesomeqa-widget-closed') {this.style.height='56px'; this.style.width='56px'}; if(e.data === 'awesomeqa-widget-opened') {this.style.height='600px'; this.style.width='400px'} } ); setTimeout(() => this.style.visibility='visible', 500)"
     ></iframe>
 
     <div
